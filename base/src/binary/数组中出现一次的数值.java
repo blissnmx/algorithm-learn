@@ -1,11 +1,11 @@
-/**
- * @author ning_mx
+package binary; /**
+ * @author blissnmx
  * @date 20:00 2022/2/9
  * @desc
  */
 
 /**
- * @author ning_mx
+ * @author blissnmx
  * @date 2022/2/9
  * 给定一个整数数组，数组中只有一个数字出现了一次，其他数字出现了3次，求出现一次的数组；
  * eg 输入： [1,2,1,2,1,2,3] 输出 3
@@ -13,7 +13,7 @@
 public class 数组中出现一次的数值 {
 
     /**
-     * @author  ning_mx
+     * @author  blissnmx
      * @date    17:21 2022/2/10
      * @description 将每个数字转化为二进制，对每个数字的每个数位相加，如果出现三次的数位之和%3，
      * 若为0，则说明出现一次的数当前的数位是0，若为1，则出现一次的数位为1，可以通过&1运算得到结果的二进制数，转化为十进制即可

@@ -1,7 +1,9 @@
+package binary;
+
 import java.util.Arrays;
 
 /**
- * @author  ning_mx
+ * @author  blissnmx
  * @date    12:50 2022/2/8
  * @description
  * 对于正整数n，计算0到n之间每个数的二进制形式中1的个数，输出数组

@@ -1,11 +1,11 @@
 /**
- * @author ning_mx
+ * @author blissnmx
  * @date 20:32 2021/12/19
  * @desc
  */
 
 /**
- * @author ning_mx
+ * @author blissnmx
  * @date 2021/12/19
  * 输入两个int型整数，求他们除法的商，要求不得使用乘号'*'、除号'/'以及
  * 求余符号'%'。当发生溢出时返回最大的整数值。假设除数部位0。例如，输入
