@@ -26,7 +26,7 @@ public class 数组中和为0的三个数字 {
         Arrays.sort(nums);
         int k = 0;
         while (k<nums.length-2){
-            towSum(nums,k,result);
+            twoSum(nums,k,result);
             //解决返回值中不得包含重复的三元组。
             int temp = nums[k];
             while(k<nums.length && temp == nums[k]){
@@ -40,7 +40,7 @@ public class 数组中和为0的三个数字 {
      * @date    17:54 2022/2/11
      * @param k 下标
      */
-    public static void towSum(int[] nums , int k ,List<int[]> result){
+    public static void twoSum(int[] nums , int k ,List<int[]> result){
         int i = k+1 ,j = nums.length - 1 ;
         while (i < j) {
             int temp = nums[k] + nums[i] + nums[j];
