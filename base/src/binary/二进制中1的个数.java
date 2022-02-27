@@ -13,7 +13,7 @@ public class 二进制中1的个数 {
     /**
      * @param n
      * @return
-     * 解法一：使用(i&(i-1))抹掉i的最后的一位1,直到i=0未知，统计次数
+     * 解法一：使用(i&(i-1))抹掉i的最后的一位1,直到i=0为止，统计计算的次数
      * O(nk),k为二进制1的个数的最大值
      */
     public static int[] binaryCount1Num_1(int n) {
@@ -31,7 +31,7 @@ public class 二进制中1的个数 {
     /**
      * @param n
      * @return
-     * 解法二：根据规律i的二进制形式中1的个数始终比(i&(i-1))的二进制形式中1的个数多1个
+     * 解法二：根据规--i的二进制形式中1的个数始终比(i&(i-1))的二进制形式中1的个数多1个
      * O(n)
      */
     public static int[] binaryCount1Num_2(int n) {
