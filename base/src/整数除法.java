@@ -8,7 +8,7 @@
  * @author blissnmx
  * @date 2021/12/19
  * 输入两个int型整数，求他们除法的商，要求不得使用乘号'*'、除号'/'以及
- * 求余符号'%'。当发生溢出时返回最大的整数值。假设除数部位0。例如，输入
+ * 求余符号'%'。当发生溢出时返回最大的整数值。假设除数不为0。例如，输入
  * 15/2,输出15/2的结果，即7。
  */
 
@@ -19,15 +19,12 @@ public class 整数除法 {
      * 空间复杂度：n
      */
     public static int violenceDivide(int dividend , int divisor){
-        int count = 0 ;
         int diff = dividend - divisor ;
         int result = 1 ;
         while (diff >= divisor) {
             diff -= divisor ;
             result ++ ;
-            count ++ ;
         }
-        System.out.println("count:" +count);
         return result;
     }
 
@@ -37,7 +34,6 @@ public class 整数除法 {
      * 空间复杂度：n
      */
     public static int optimizeDivide(int dividend, int divisor) {
-        int count = 0 ;
         int result = 1;
         int diff = dividend - divisor ;
         while (diff >= divisor) {
@@ -45,16 +41,12 @@ public class 整数除法 {
                 while(diff >= divisor + divisor){
                     result += 2 ;
                     diff -= (divisor + divisor);
-                    count ++ ;
                 }
             }else{
                 result ++ ;
                 diff -= divisor ;
-                count ++ ;
-
             }
         }
-        System.out.println("count:" +count);
         return result;
     }
 
