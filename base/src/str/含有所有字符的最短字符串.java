@@ -1,6 +1,7 @@
 package str;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author  blissnmx
@@ -15,26 +16,82 @@ public class 含有所有字符的最短字符串 {
     /**
      * 思考：记录不重复字符的开始下标和结束下标
      * 用map记录字符出现与否与下标位置，如果字符出现过，则开始下标为原下标+1且取最大值（最后的位置）
-     * 时间复杂度：O(n)
+     * 时间复杂度：O(n+n*m) ==> O(n*m)
      * 空间复杂度：O(1)
      */
-    public static int noRepeatWordMaxLength(String words) {
-        int result = 0 ,startIdx = 0,endIdx = 0;
-        HashMap<Character, Integer> charMap = new HashMap<>();
-        for (int i = 0; i < words.length(); i++) {
-            endIdx = i ;
-            if (charMap.containsKey(words.charAt(i))) {
-                startIdx = Math.max(startIdx,charMap.get(words.charAt(i))+1);
-            }
-            charMap.put(words.charAt(i), i);
-            result = Math.max(result, endIdx - startIdx + 1);
-        }
+    public static String noRepeatWordMaxLength(String words,String target) {
+        AtomicInteger ac = new AtomicInteger();
 
-        return  result;
+        int start =0 ,end = target.length()-1,minIdx = 0,maxIdx = words.length(),minLen = Integer.MAX_VALUE;
+
+        while (end < words.length()) {
+            if(checkIsAllContains(words.substring(start,end+1),target,ac)){
+                if( (end - start +1)<minLen){
+                    minIdx = start;
+                    maxIdx = end ;
+                    minLen = maxIdx - minIdx +1 ;
+                }
+                start ++ ;
+            }else{
+                end ++ ;
+            }
+            ac.incrementAndGet();
+        }
+        System.out.println(ac.get());
+        return  maxIdx-minIdx > words.length()?"":words.substring(minIdx,maxIdx+1);
     }
 
+    private static boolean checkIsAllContains(String str, String target,AtomicInteger ac ) {
+        for (char c : target.toCharArray()) {
+            if(str.indexOf(c)== -1){
+                return false;
+            }
+            ac.incrementAndGet();
+        }
+        return true;
+    }
+    //优化方案
+    public static String noRepeatWordMaxLength2(String words,String target) {
+        AtomicInteger ac = new AtomicInteger();
+
+        int start =0 ,end = 0,minIdx = 0,maxIdx = words.length(),minLen = Integer.MAX_VALUE,count = target.length();
+        HashMap<Character, Integer> charMap = new HashMap<>();
+        for (char c : target.toCharArray()) {
+            charMap.put(c, charMap.getOrDefault(c, 0) + 1);
+        }
+
+        while (end < words.length()) {
+            if(count <= 0){
+                if( (end - start) < minLen){
+                    minIdx = start;
+                    maxIdx = end ;
+                    minLen = maxIdx - minIdx ;
+                }
+                if(charMap.containsKey(words.charAt(start))){
+                    charMap.put(words.charAt(start),charMap.get(words.charAt(start))+1);
+                    if (charMap.get(words.charAt(start)) == 1) {
+                        count++;
+                    }
+                }
+             start ++ ;
+            }else{
+                if(charMap.containsKey(words.charAt(end))) {
+                    charMap.put(words.charAt(end), charMap.get(words.charAt(end)) - 1);
+                    if (charMap.get(words.charAt(end)) == 0) {
+                        count -- ;
+                    }
+                }
+                end ++ ;
+            }
+            ac.incrementAndGet();
+        }
+        System.out.println(ac.get());
+        return  maxIdx-minIdx > words.length() ? "": words.substring(minIdx,maxIdx);
+    }
 
     public static void main(String[] args) {
-        //System.out.println("noRepeatWordMaxLength  = " + noRepeatWordMaxLength("babccabcdes"));
+        System.out.println("noRepeatWordMaxLength(\"ACEBFCABD\", \"ABC\") = " + noRepeatWordMaxLength("ACEBFCABD", "ABC"));
+
+        System.out.println("noRepeatWordMaxLength2(\"ACEBFCABD\", \"ABC\") = " + noRepeatWordMaxLength2("ACEBFCABD", "ABC"));
     }
 }
