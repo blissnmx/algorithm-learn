@@ -46,7 +46,7 @@ public class 二进制中1的个数 {
      * @param n
      * @return
      * 解法三：对于正整数n，使用n/2计算，整数n=n/2左移1位的值，而左移1位后二进制中1的个数不变，即偶数n和n/2中1的个数相同
-     * 对于基数n，相当于n/2左移一位后最后一位加1得到，即1的个数比n/2多一个
+     * 对于奇数n，相当于n/2左移一位后最后一位加1得到，即1的个数比n/2多一个
      */
     public static int[] binaryCount1Num_3(int n) {
         int[] result = new int[n+1];

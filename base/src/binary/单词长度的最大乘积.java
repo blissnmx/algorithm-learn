@@ -1,7 +1,5 @@
 package binary;
 
-import java.util.Arrays;
-
 /**
  * @author  blissnmx
  * @date    12:50 2022/2/8
@@ -42,7 +40,24 @@ public class 单词长度的最大乘积 {
         return  result;
     }
 
+    //问题可以归结为：判断两个字符是否有相同字符
+    public static boolean checkTwoWordSameChar(String word1, String word2) {
+        //用int型整数标识每个单词，整数转化为二进制是32位，从右到左记录字符出现与否，出现为1，得到单词对应的十进制整数，
+        // 两个整数做与运算，若为0，则不存在相同字符
+        int w1 = 0 ,w2 = 0;
+        for (int i = 0; i < word1.length(); i++) {
+            w1 = w1 | (1 << word1.charAt(i) - 'a') ;
+        }
+        for (int i = 0; i < word2.length(); i++) {
+            w2 = w2 | (1 << word2.charAt(i) - 'a') ;
+        }
+
+        return  (w1 & w2) == 0 ;
+    }
+
     public static void main(String[] args) {
-        System.out.println("wordMaxLength = " + wordMaxLength(new String[]{"abc", "bcd", "efg", "higklm"}));
+        //System.out.println("wordMaxLength = " + wordMaxLength(new String[]{"abc", "bcd", "efg", "higklm"}));
+        System.out.println("checkTwoWordSameChar(\"abcde\",\"efhj\") = " + checkTwoWordSameChar("abcde", "t"));
+
     }
 }

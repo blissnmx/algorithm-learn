@@ -9,26 +9,21 @@ package binary;
 public class 二进制加法 {
 
     /**
-     * @param a 二进制形式字符串
-     * @param b
-     * @return
+     * 将两个二进制位数补齐，从右往左以此计算，结果字符串翻转得到结果
      */
     public static String addBinary(String a, String b) {
         StringBuilder result = new StringBuilder();
-        //将两个字符串位数对齐，左边补0
-        if(a.length() > b.length()){
-             int tem = a.length() - b.length();
-             for(int i = 1 ;i<= tem ; ++i){
-                 b = "0" + b ;
-             }
-        }else if(a.length() < b.length()){
-            int tem = b.length() - a.length();
-            for(int i = 1 ;i<= tem ; ++i){
-                a = "0" + a ;
-            }
+        //对齐补0
+        int diff = Math.abs(a.length() - b.length());
+        StringBuilder sub = new StringBuilder();
+        for (int i = 0; i < diff; i++) {
+            sub.append("0");
         }
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
+        if(a.length()>b.length()){
+            b = sub.append(b).toString() ;
+        }else{
+            a = sub.append(a).toString() ;
+        }
         int carry = 0 ;
         int sum = 0 ;
         for(int i = a.length() -1 ; i>=0 ; --i){
@@ -45,7 +40,7 @@ public class 二进制加法 {
             }
         }
         return result.reverse().toString() ;
-    }
+     }
 
     public static void main(String[] args) {
         System.out.println("addBinary  = " + addBinary("11111111", "101"));

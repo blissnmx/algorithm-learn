@@ -36,7 +36,22 @@ public class 乘积小于k的子数组 {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,4,3,5,7,};
-        System.out.println("subArrayProductTimes(nums, 7) = " + subArrayProductTimes(nums, 7));
+        int[] nums = new int[]{10, 5, 2, 6};
+        //System.out.println("subArrayProductTimes(nums, 7) = " + subArrayProductTimes(nums, 7));
+        int l = 0 ,r = 0 ,product = nums[r],k = 100;
+        int count = 0 ;
+        while(l <= r && r< nums.length){
+            if(product < k){
+                count += r-l + 1 ;
+                r++;
+                if(r<nums.length){
+                    product *= nums[r];
+                }
+            }else{
+                product /= nums[l];
+                l++;
+            }
+        }
+        System.out.println(count);
     }
 }

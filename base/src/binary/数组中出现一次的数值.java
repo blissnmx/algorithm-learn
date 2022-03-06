@@ -1,9 +1,4 @@
-package binary; /**
- * @author blissnmx
- * @date 20:00 2022/2/9
- * @desc
- */
-
+package binary;
 /**
  * @author blissnmx
  * @date 2022/2/9
@@ -39,7 +34,35 @@ public class 数组中出现一次的数值 {
         return result;
     }
 
+    // 使用二进制求解，问题转化为
+    // 1、求一个整n数的二进制第k数位是0还是1 2、求一个二进制数的十进制
+    public static int binaryPositionIsOneOrZero(int n,int k ) {
+        int result = 0 ;
+        for (int i = 0; i < 32; ++i) {
+             result = n >> (31 - i) & 1 ;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        System.out.println("findOnceNum  = " + findOnceNum(new int[]{1, 1, 1, 2, 2, 2, 3,3,3,100}));
+        //System.out.println("findOnceNum  = " + findOnceNum(new int[]{1, 1, 1, 2, 2, 2, 3,3,3,100}));
+        System.out.println("binaryStrToInt(\"110\") = " + binaryStrToInt("110"));
+    }
+
+    /**
+     * 已知二进制数字符串101101，求十进制整数
+     */
+    public static int binaryStrToInt(String bstr) {
+        int result = 0 ;
+        /*for (int i = 0; i < bstr.length(); i++) {
+            int bit = Integer.parseInt(String.valueOf(bstr.charAt(i)));
+            result = (result << 1) + bit;
+        }*/
+        for (int i = 0; i < bstr.length(); i++) {
+            int bit = Integer.parseInt(String.valueOf(bstr.charAt(i)));
+            result += bit * (1<< (31-(31 - bstr.length()) - 1 -i)) ;
+        }
+
+        return  result ;
     }
 }
