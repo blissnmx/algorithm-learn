@@ -26,7 +26,7 @@ public class 乘积小于k的子数组 {
         int count = 0,product = 1 ,l = 0 ;
         for (int r = 0; r < nums.length; r++) {
             product *= nums[r];
-            while (l <= r && product >= k) {
+            while (l <= r && product > k) {
                 product /= nums[l];
                 l++;
             }
@@ -37,7 +37,7 @@ public class 乘积小于k的子数组 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{10, 5, 2, 6};
-        //System.out.println("subArrayProductTimes(nums, 7) = " + subArrayProductTimes(nums, 7));
+        System.out.println("subArrayProductTimes() = " + subArrayProductTimes(nums, 100));
         int l = 0 ,r = 0 ,product = nums[r],k = 100;
         int count = 0 ;
         while(l <= r && r< nums.length){

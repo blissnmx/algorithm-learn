@@ -14,12 +14,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class 含有所有字符的最短字符串 {
 
     /**
-     * 思考：记录不重复字符的开始下标和结束下标
-     * 用map记录字符出现与否与下标位置，如果字符出现过，则开始下标为原下标+1且取最大值（最后的位置）
      * 时间复杂度：O(n+n*m) ==> O(n*m)
      * 空间复杂度：O(1)
      */
-    public static String noRepeatWordMaxLength(String words,String target) {
+    public static String containerAllWordMinLength(String words,String target) {
         AtomicInteger ac = new AtomicInteger();
 
         int start =0 ,end = target.length()-1,minIdx = 0,maxIdx = words.length(),minLen = Integer.MAX_VALUE;
@@ -50,8 +48,11 @@ public class 含有所有字符的最短字符串 {
         }
         return true;
     }
-    //优化方案
-    public static String noRepeatWordMaxLength2(String words,String target) {
+    /*
+    * 优化方案
+    * count记录
+    */
+    public static String containerAllWordMinLength2(String words,String target) {
         AtomicInteger ac = new AtomicInteger();
 
         int start =0 ,end = 0,minIdx = 0,maxIdx = words.length(),minLen = Integer.MAX_VALUE,count = target.length();
@@ -90,8 +91,8 @@ public class 含有所有字符的最短字符串 {
     }
 
     public static void main(String[] args) {
-        System.out.println("noRepeatWordMaxLength(\"ACEBFCABD\", \"ABC\") = " + noRepeatWordMaxLength("ACEBFCABD", "ABC"));
+        System.out.println("noRepeatWordMaxLength(\"ACEBFCABD\", \"ABC\") = " + containerAllWordMinLength("ACEBFCABD", "ABC"));
 
-        System.out.println("noRepeatWordMaxLength2(\"ACEBFCABD\", \"ABC\") = " + noRepeatWordMaxLength2("ACEBFCABD", "ABC"));
+        System.out.println("noRepeatWordMaxLength2(\"ACEBFCABD\", \"ABC\") = " + containerAllWordMinLength2("ACEBFCABD", "ABC"));
     }
 }

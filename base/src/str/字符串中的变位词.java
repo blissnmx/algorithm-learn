@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 /**
  * @author  blissnmx
- * @date    17:50 2022/2/20
- * @description
- *输入两个字符串s1和s2，如何判断s2中是否包含s1的某个变位词？
+ * <p>
+ * 输入两个字符串s1和s2，如何判断s2中是否包含s1的某个变位词？
  * 如果s2中包含s1的某个变位词，则s1至少有一个变位词是s2的子字符串。
  * 假设两个输入字符串中只包含英语小写字母。
  * 例如输入字符串s1为"ab"，s2为"dgbaf"，由于s2中包含s1的变位词"ba"，因此输出是true。
  * 如果输入字符串s1为"ac"，s2为"dcgaf"，输出为false。
+ * </p>
  */
 public class 字符串中的变位词 {
 
@@ -52,6 +52,6 @@ public class 字符串中的变位词 {
     }
 
     public static void main(String[] args) {
-         System.out.println("changeWordIsExists = " + changeWordIsExists("fa", "dgbaf"));
+         System.out.println("changeWordIsExists = " + changeWordIsExists("ab", "dgbaf"));
     }
 }

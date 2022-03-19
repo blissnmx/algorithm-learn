@@ -56,12 +56,34 @@ public class 排序数组中两个数字之和 {
         return  result;
     }
 
+    /**
+     * 排序数组求和，反向双指针
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
+     */
+    public static int[] arrayTwoSumDoublePoint(int[] nums ,int k){
+        int[] result = new int[2];
+        int left = 0 ,right= nums.length-1 ;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum > k) {
+                right -- ;
+            } else if (sum < k) {
+                left ++ ;
+            }else{
+                return new int[]{left, right};
+            }
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6};
-        System.out.println("arrayTwoSum_双指针(nums, 7) = " );
-        Arrays.stream(arrayTwoSum_双指针(nums, 7)).forEach(System.out::println);
-        System.out.println("arrayTwoSum_哈希表(nums,7) = "  );
-        Arrays.stream(arrayTwoSum_哈希表(nums, 7)).forEach(System.out::println);
+        int[] nums = new int[]{1, 2, 4, 6, 10};
+//        System.out.println("arrayTwoSum_双指针(nums, 7) = " );
+//        Arrays.stream(arrayTwoSum_双指针(nums, 7)).forEach(System.out::println);
+//        System.out.println("arrayTwoSum_哈希表(nums,7) = "  );
+//        Arrays.stream(arrayTwoSum_哈希表(nums, 7)).forEach(System.out::println);
+        Arrays.stream(arrayTwoSumDoublePoint(nums, 8)).forEach(System.out::println);
+
     }
 }

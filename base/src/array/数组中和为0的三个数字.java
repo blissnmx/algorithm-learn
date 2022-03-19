@@ -35,11 +35,7 @@ public class 数组中和为0的三个数字 {
         }
         return  result;
     }
-    /**
-     * @author  blissnmx
-     * @date    17:54 2022/2/11
-     * @param k 下标
-     */
+
     public static void twoSum(int[] nums , int k ,List<int[]> result){
         int i = k+1 ,j = nums.length - 1 ;
         while (i < j) {

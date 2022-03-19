@@ -52,16 +52,16 @@ public class 两个链表的第一个重合结点 {
          ListNode a = new ListNode(1)
                  .setNext(new ListNode(2)
                 .setNext(new ListNode(3)
+                .setNext(new ListNode(2)
                 .setNext(new ListNode(4)
                 .setNext(new ListNode(5)
-                .setNext(new ListNode(6)
                 )))));
          ListNode b = new ListNode(7)
                  .setNext(new ListNode(8)
                 .setNext(new ListNode(9)
                 .setNext(new ListNode(4)
                 .setNext(new ListNode(5)
-                .setNext(new ListNode(6)
+                .setNext(new ListNode(9)
                 )))));
         //System.out.println("countListNode(a) = " + countListNode(a));
         ListNode listNode = findRepeatNode(a,b);
