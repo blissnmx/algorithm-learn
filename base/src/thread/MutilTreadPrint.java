@@ -15,6 +15,7 @@ import java.util.concurrent.locks.LockSupport;
 /**
  * @author ning_mx
  * @date 2022/3/18
+ * 多线程顺序打印ABC问题
  */
 public class MutilTreadPrint {
     public static void main(String[] args) throws InterruptedException {
