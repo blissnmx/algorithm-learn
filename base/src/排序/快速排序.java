@@ -13,7 +13,7 @@ import java.util.Random;
  * @date 2022/3/20
  * 快速排序
  */
-public class QuickSort {
+public class 快速排序 {
 
     public static void quickSort(int[] nums,int start ,int end){
         if(end > start){

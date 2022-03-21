@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @date 2022/3/20
  * 计数排序，适合数组内的数据在一定范围k内，并且k远小于数组长度n
  */
-public class CountSort {
+public class 计数排序 {
     public static void countSort(int[] nums){
         int min = Integer.MAX_VALUE ;
         int max = Integer.MIN_VALUE ;
