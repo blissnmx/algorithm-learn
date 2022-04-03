@@ -3,7 +3,7 @@
  * @date 17:00 2022/3/8
  * @desc
  */
-package queue;
+package Model;
 
 /**
  * @author ning_mx

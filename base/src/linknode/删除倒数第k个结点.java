@@ -5,6 +5,8 @@
  */
 package linknode;
 
+import Model.ListNode;
+
 /**
  * @author blissnmx
  * @date 2022/2/24
@@ -17,7 +19,7 @@ public class 删除倒数第k个结点 {
      * k.next = k.next.next删除k
      * 时间复杂度：O(n+k)
      */
-    public static ListNode removeBackNode(ListNode head,int k) {
+    public static ListNode removeBackNode(ListNode head, int k) {
         ListNode s = head ,f = head;
         for (int i = 1; i <= k; i++) {
             f = f.next ;

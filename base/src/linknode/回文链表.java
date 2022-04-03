@@ -5,6 +5,8 @@
  */
 package linknode;
 
+import Model.ListNode;
+
 /**
  * @author blissnmx
  * @date 2022/2/24

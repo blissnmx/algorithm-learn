@@ -3,7 +3,7 @@
  * @date 11:36 2022/2/24
  * @desc
  */
-package linknode;
+package Model;
 
 /**
  * @author blissnmx
