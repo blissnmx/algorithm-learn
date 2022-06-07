@@ -16,9 +16,9 @@ import java.util.Queue;
  * 如何在一个二叉树中找出它最底层中最左边节点的值？
  * 假设二叉树中最少有一个节点。
  * 例如在图中的二叉树中最底层节点中最左边一个节点的值是5。
- *           8
- *      6        10
- *   5    7    9   11
+ * 8
+ * 6        10
+ * 5    7    9   11
  */
 public class 二叉树最底层最左边的值 {
     /**
@@ -30,7 +30,7 @@ public class 二叉树最底层最左边的值 {
         }
         Queue<TreeNode> curQue = new LinkedList();
         Queue<TreeNode> nextQue = new LinkedList();
-        int result = 0 ;
+        int result = 0;
         curQue.offer(root);
         while (!curQue.isEmpty()) {
             TreeNode parent = curQue.poll();
@@ -40,15 +40,15 @@ public class 二叉树最底层最左边的值 {
             if (parent.right != null) {
                 nextQue.offer(parent.right);
             }
-            if(curQue.isEmpty()){
-                curQue = nextQue ;
+            if (curQue.isEmpty()) {
+                curQue = nextQue;
                 nextQue = new LinkedList<>();
-                if(!curQue.isEmpty()){
+                if (!curQue.isEmpty()) {
                     result = curQue.peek().val;
                 }
             }
         }
-        return result ;
+        return result;
     }
 
     public static void main(String[] args) {

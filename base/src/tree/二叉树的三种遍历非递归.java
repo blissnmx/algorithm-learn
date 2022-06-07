@@ -24,11 +24,11 @@ public class 二叉树的三种遍历非递归 {
         List<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while(!stack.isEmpty() || cur != null) {
+        while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 result.add(cur.val);
                 stack.push(cur);
-                cur = cur.left ;
+                cur = cur.left;
             }
             TreeNode pop = stack.pop();
             cur = pop.right;
@@ -44,18 +44,19 @@ public class 二叉树的三种遍历非递归 {
     public static List<Integer> midOrderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root ;
-        while(cur !=null || !stack.isEmpty()){
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
                 stack.push(cur);
-                cur = cur.left ;
+                cur = cur.left;
             }
             TreeNode pop = stack.pop();
             result.add(pop.val);
-            cur = pop.right ;
+            cur = pop.right;
         }
         return result;
     }
+
     /**
      * 后序遍历：
      * 递归
@@ -64,26 +65,26 @@ public class 二叉树的三种遍历非递归 {
     public static List<Integer> lastOrderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode cur = root ;
-        TreeNode pre = null ;
-        while(cur != null || !stack.isEmpty()){
+        TreeNode cur = root;
+        TreeNode pre = null;
+        while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
                 stack.push(cur);
-                cur = cur.left ;
+                cur = cur.left;
             }
             TreeNode pop = stack.peek();
             if (pop.right != null && pop.right == pre) {
                 TreeNode parent = stack.pop();
                 result.add(parent.val);
-                pre = parent ;
-            }else{
+                pre = parent;
+            } else {
                 if (pop.right != null) {
-                    cur = pop.right ;
-                }else {
+                    cur = pop.right;
+                } else {
                     cur = stack.pop();
                     result.add(cur.val);
-                    pre = cur ;
-                    cur = null ;
+                    pre = cur;
+                    cur = null;
                 }
             }
         }

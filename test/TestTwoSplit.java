@@ -10,22 +10,22 @@
  * 二分法求根号n
  */
 public class TestTwoSplit {
-    public static int twoSplit(int n ) {
-       int left = 1 ;
-       int right = n ;
+    public static int twoSplit(int n) {
+        int left = 1;
+        int right = n;
         while (left < n) {
-            int mid = (left + right) /2 ;
-            if(mid ==  n / mid){
-                return mid ;
+            int mid = (left + right) / 2;
+            if (mid == n / mid) {
+                return mid;
             }
-            if(mid > n / mid){
+            if (mid > n / mid) {
                 right--;
             }
             if (mid < n / mid) {
                 left++;
             }
         }
-        return 0 ;
+        return 0;
     }
 
     public static void main(String[] args) {

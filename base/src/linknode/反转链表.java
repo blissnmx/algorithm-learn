@@ -19,24 +19,24 @@ public class 反转链表 {
      * 时间复杂度：O(n)
      */
     public static ListNode revertListNode(ListNode head) {
-        ListNode pre =null , cur = head ;
+        ListNode pre = null, cur = head;
         while (cur != null) {
-            ListNode next = cur.next ;
-            cur.next = pre ;
-            pre = cur ;
-            cur = next ;
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
         return pre;
     }
 
     public static void main(String[] args) {
-         ListNode a = new ListNode(1)
-                 .setNext(new ListNode(2)
-                .setNext(new ListNode(3)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                .setNext(new ListNode(6)
-                )))));
+        ListNode a = new ListNode(1)
+                .setNext(new ListNode(2)
+                        .setNext(new ListNode(3)
+                                .setNext(new ListNode(4)
+                                        .setNext(new ListNode(5)
+                                                .setNext(new ListNode(6)
+                                                )))));
 
         ListNode listNode = revertListNode(a);
         while (listNode != null) {

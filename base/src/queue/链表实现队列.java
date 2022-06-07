@@ -15,9 +15,9 @@ package queue;
  * size()  返回队列大小
  */
 public class 链表实现队列 {
-    class Node{
-        public  int val ;
-        public Node next ;
+    class Node {
+        public int val;
+        public Node next;
 
         public Node(int val) {
             this.val = val;
@@ -27,10 +27,10 @@ public class 链表实现队列 {
     /**
      * 链表实现队列的“先进先出”,需要成员属性保存头节点和尾节点
      */
-    class MyQueue{
-        public Node head ;
-        public Node tail ;
-        private int size ;
+    class MyQueue {
+        public Node head;
+        public Node tail;
+        private int size;
 
         public MyQueue() {
             this.head = new Node(-1);
@@ -41,7 +41,7 @@ public class 链表实现队列 {
             if (head == null) {
                 head.next = new Node(val);
                 tail = head.next;
-            }else{
+            } else {
                 tail.next = new Node(val);
             }
             size++;
@@ -50,13 +50,15 @@ public class 链表实现队列 {
         public int peek() {
             return head.next.val;
         }
-        public int poll(){
-            head.next = head.next.next ;
-            size -- ;
+
+        public int poll() {
+            head.next = head.next.next;
+            size--;
             return head.next.val;
         }
-        public int size(){
-            return size ;
+
+        public int size() {
+            return size;
         }
 
     }

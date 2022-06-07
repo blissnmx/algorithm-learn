@@ -10,9 +10,9 @@ package tree;
  * @date 2022/3/8
  */
 public class TreeNode {
-    public int val ;
-    public TreeNode left ;
-    public TreeNode right ;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int val) {
         this.val = val;

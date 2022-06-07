@@ -22,21 +22,23 @@ import java.util.Queue;
  */
 public class 最近请求次数 {
     class RecentCounter {
-      private Queue<Integer> times;
-      private int catacity ;
-      public RecentCounter(){
-          this.catacity = 3000 ;
-          this.times = new LinkedList<>();
-      }
-    /**
-     * first+3000 < t -->poll
-     */
-      public int ping(int t){
-          times.offer(t);
-          while (times.peek() + catacity < t) {
-              times.poll();
-          }
-          return times.size() ;
-      }
-  }
+        private Queue<Integer> times;
+        private int catacity;
+
+        public RecentCounter() {
+            this.catacity = 3000;
+            this.times = new LinkedList<>();
+        }
+
+        /**
+         * first+3000 < t -->poll
+         */
+        public int ping(int t) {
+            times.offer(t);
+            while (times.peek() + catacity < t) {
+                times.poll();
+            }
+            return times.size();
+        }
+    }
 }

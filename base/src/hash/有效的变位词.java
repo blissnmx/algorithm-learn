@@ -23,13 +23,13 @@ public class 有效的变位词 {
         }
         int[] charNums = new int[26];
         for (int i = 0; i < word1.length(); i++) {
-            charNums[word1.charAt(i) - 'a'] ++ ;
+            charNums[word1.charAt(i) - 'a']++;
         }
         for (int i = 0; i < word2.length(); i++) {
             if (charNums[word2.charAt(i) - 'a'] == 0) {
-                return false ;
+                return false;
             }
-            charNums[word2.charAt(i) - 'a'] -- ;
+            charNums[word2.charAt(i) - 'a']--;
         }
         return true;
     }

@@ -54,15 +54,15 @@ public class TestChangeWordIsExists {
         }*/
         int[] bits = new int[26];
         for (int i = 0; i < s1.length(); i++) {
-            bits[s1.charAt(i) - 'a'] ++ ;
-            bits[s2.charAt(i) - 'a'] -- ;
+            bits[s1.charAt(i) - 'a']++;
+            bits[s2.charAt(i) - 'a']--;
         }
         if (isArrayZero(bits)) {
             System.out.println(true);
         }
         for (int i = s1.length(); i < s2.length(); i++) {
-            bits[s2.charAt(i) - 'a'] -- ;
-            bits[s2.charAt(i - s1.length()) - 'a'] ++ ;
+            bits[s2.charAt(i) - 'a']--;
+            bits[s2.charAt(i - s1.length()) - 'a']++;
             if (isArrayZero(bits)) {
                 System.out.println(true);
             }
@@ -73,13 +73,14 @@ public class TestChangeWordIsExists {
     public static boolean isArrayZero(int[] arr) {
         for (int i : arr) {
             if (i != 0) {
-                return false ;
+                return false;
             }
         }
-        return true ;
+        return true;
     }
+
     public static boolean isAllZero(Collection<Integer> sets) {
-        return sets.stream().mapToLong(d->d).sum() == 0 ;
+        return sets.stream().mapToLong(d -> d).sum() == 0;
     }
 
 
@@ -92,20 +93,20 @@ public class TestChangeWordIsExists {
         List<Integer> result = new ArrayList<>();
         int[] bits = new int[26];
         for (int i = 0; i < s2.length(); i++) {
-            bits[s2.charAt(i) - 'a'] ++ ;
-            bits[s1.charAt(i) - 'a'] -- ;
+            bits[s2.charAt(i) - 'a']++;
+            bits[s1.charAt(i) - 'a']--;
         }
         if (isArrayZero(bits)) {
             result.add(0);
         }
         for (int i = s2.length(); i < s1.length(); i++) {
-            bits[s2.charAt(i) - 'a'] -- ;
-            bits[s2.charAt(i-s1.length() - 'a')] ++;
+            bits[s2.charAt(i) - 'a']--;
+            bits[s2.charAt(i - s1.length() - 'a')]++;
             if (isArrayZero(bits)) {
                 result.add(i - s1.length() + 1);
             }
         }
 
-        return result ;
+        return result;
     }
 }

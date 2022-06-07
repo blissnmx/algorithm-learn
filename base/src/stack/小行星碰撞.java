@@ -27,26 +27,26 @@ public class 小行星碰撞 {
     public static Stack<Integer> palnetColide(int[] nums) {
         Stack<Integer> stack = new Stack<>();
         for (int num : nums) {
-            if(stack.empty()){
+            if (stack.empty()) {
                 stack.push(num);
-            }else{
-                Integer top= stack.peek();
-                if((top > 0 && num > 0) || (top < 0 && num < 0)){
+            } else {
+                Integer top = stack.peek();
+                if ((top > 0 && num > 0) || (top < 0 && num < 0)) {
                     stack.push(num);
-                }else{
-                    while(!stack.empty() && num < 0 && Math.abs(num)>Math.abs(top)){
+                } else {
+                    while (!stack.empty() && num < 0 && Math.abs(num) > Math.abs(top)) {
                         top = stack.pop();
                     }
                     if (top < 0 && Math.abs(top) > Math.abs(num)) {
                         stack.push(num);
                     }
-                    if(stack.empty()){
-                        stack.push(num) ;
+                    if (stack.empty()) {
+                        stack.push(num);
                     }
                 }
             }
         }
-        return stack ;
+        return stack;
     }
 
 

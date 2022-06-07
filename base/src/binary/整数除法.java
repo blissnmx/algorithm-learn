@@ -18,12 +18,12 @@ public class 整数除法 {
      * 时间复杂度：O(n)
      * 空间复杂度：n
      */
-    public static int violenceDivide(int dividend , int divisor){
-        int diff = dividend - divisor ;
-        int result = 1 ;
+    public static int violenceDivide(int dividend, int divisor) {
+        int diff = dividend - divisor;
+        int result = 1;
         while (diff >= divisor) {
-            diff -= divisor ;
-            result ++ ;
+            diff -= divisor;
+            result++;
         }
         return result;
     }
@@ -35,16 +35,16 @@ public class 整数除法 {
      */
     public static int optimizeDivide(int dividend, int divisor) {
         int result = 1;
-        int diff = dividend - divisor ;
+        int diff = dividend - divisor;
         while (diff >= divisor) {
             if (diff >= (divisor + divisor)) {
-                while(diff >= divisor + divisor){
-                    result += 2 ;
+                while (diff >= divisor + divisor) {
+                    result += 2;
                     diff -= (divisor + divisor);
                 }
-            }else{
-                result ++ ;
-                diff -= divisor ;
+            } else {
+                result++;
+                diff -= divisor;
             }
         }
         return result;

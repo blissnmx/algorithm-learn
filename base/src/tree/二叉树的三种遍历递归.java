@@ -19,13 +19,13 @@ public class 二叉树的三种遍历递归 {
      * 递归
      * root节点一定是第一个
      */
-    public static List<Integer> preOrderdTraveral(TreeNode root,List<Integer> result) {
+    public static List<Integer> preOrderdTraveral(TreeNode root, List<Integer> result) {
         if (root == null) {
             return result;
         }
         result.add(root.val);
-        preOrderdTraveral(root.left,result);
-        preOrderdTraveral(root.right,result);
+        preOrderdTraveral(root.left, result);
+        preOrderdTraveral(root.right, result);
         return result;
     }
 
@@ -34,7 +34,7 @@ public class 二叉树的三种遍历递归 {
      * 递归
      * root节点在中间位置
      */
-    public static List<Integer> midOrderdTraveral(TreeNode root,List<Integer> result) {
+    public static List<Integer> midOrderdTraveral(TreeNode root, List<Integer> result) {
         if (root == null) {
             return result;
         }
@@ -43,12 +43,13 @@ public class 二叉树的三种遍历递归 {
         midOrderdTraveral(root.right, result);
         return result;
     }
+
     /**
      * 后序遍历：左-右-根，left->right->root
      * 递归
      * root节点一定在最后
      */
-    public static List<Integer> lastOrderdTraveral(TreeNode root,List<Integer> result) {
+    public static List<Integer> lastOrderdTraveral(TreeNode root, List<Integer> result) {
         if (root == null) {
             return result;
         }

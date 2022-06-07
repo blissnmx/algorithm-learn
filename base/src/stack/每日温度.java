@@ -25,23 +25,23 @@ public class 每日温度 {
     public static int[] daliyTemperature(int[] nums) {
         int[] result = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
-        for (int i = 0 ;i<nums.length;++i) {
+        for (int i = 0; i < nums.length; ++i) {
             int num = nums[i];
-            if(stack.empty()){
+            if (stack.empty()) {
                 stack.push(i);
-            }else{
+            } else {
                 int topVal = nums[stack.peek()];
-                while(!stack.empty() && num > topVal) {
+                while (!stack.empty() && num > topVal) {
                     Integer pop = stack.pop();
-                    result[pop] = i - pop ;
-                    if(!stack.empty()){
+                    result[pop] = i - pop;
+                    if (!stack.empty()) {
                         topVal = nums[stack.peek()];
                     }
                 }
                 stack.push(i);
             }
         }
-        return result ;
+        return result;
     }
 
 

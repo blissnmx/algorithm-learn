@@ -10,8 +10,8 @@ package Model;
  * @date 2022/2/24
  */
 public class ListNode {
-    public int val ;
-    public ListNode next ;
+    public int val;
+    public ListNode next;
 
     public ListNode(int val) {
         this.val = val;
@@ -23,6 +23,6 @@ public class ListNode {
 
     public ListNode setNext(ListNode next) {
         this.next = next;
-        return  this;
+        return this;
     }
 }

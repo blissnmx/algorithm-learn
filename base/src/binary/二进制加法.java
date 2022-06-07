@@ -19,28 +19,28 @@ public class 二进制加法 {
         for (int i = 0; i < diff; i++) {
             sub.append("0");
         }
-        if(a.length()>b.length()){
-            b = sub.append(b).toString() ;
-        }else{
-            a = sub.append(a).toString() ;
+        if (a.length() > b.length()) {
+            b = sub.append(b).toString();
+        } else {
+            a = sub.append(a).toString();
         }
-        int carry = 0 ;
-        int sum = 0 ;
-        for(int i = a.length() -1 ; i>=0 ; --i){
+        int carry = 0;
+        int sum = 0;
+        for (int i = a.length() - 1; i >= 0; --i) {
             int va = Integer.parseInt(String.valueOf(a.charAt(i)));
             int vb = Integer.parseInt(String.valueOf(b.charAt(i)));
-            sum = va + vb + carry ;
-            if(sum >= 2 ){
-                carry = 1 ;
-                sum = 0 ;
+            sum = va + vb + carry;
+            if (sum >= 2) {
+                carry = 1;
+                sum = 0;
             }
             result.append(sum);
-            if(i == 0 && carry != 0){
+            if (i == 0 && carry != 0) {
                 result.append(carry);
             }
         }
-        return result.reverse().toString() ;
-     }
+        return result.reverse().toString();
+    }
 
     public static void main(String[] args) {
         System.out.println("addBinary  = " + addBinary("11111111", "101"));

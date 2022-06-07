@@ -12,6 +12,7 @@ public class TestIsRemoveCharToGetPalineDrome {
 
     /**
      * 判断一个字符串删除一个字符后是否是回文
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -22,21 +23,21 @@ public class TestIsRemoveCharToGetPalineDrome {
             if (str.charAt(left) != str.charAt(right)) {
                 break;
             }
-            left ++ ;
-            right -- ;
+            left++;
+            right--;
         }
         String subStrLeft = "";
-        String subStrRight ="" ;
+        String subStrRight = "";
         //删除下标为left或者right的字符后，判断是否是回文
         if (left == 0) {
             subStrLeft = str.substring(1, str.length());
-        }else{
+        } else {
             subStrLeft = str.substring(0, left) + str.substring(left + 1, str.length());
         }
         if (right == str.length() - 1) {
             subStrRight = str.substring(0, right);
-        }else{
-            subStrRight= str.substring(0,right) + str.substring( right+1, str.length());
+        } else {
+            subStrRight = str.substring(0, right) + str.substring(right + 1, str.length());
         }
         boolean b = isPalineDrome(subStrLeft) || isPalineDrome(subStrRight);
         System.out.println(b);
@@ -48,8 +49,8 @@ public class TestIsRemoveCharToGetPalineDrome {
             if (str.charAt(left) != str.charAt(right)) {
                 return false;
             }
-            left ++ ;
-            right -- ;
+            left++;
+            right--;
         }
         return true;
     }

@@ -8,7 +8,7 @@ package str;
 /**
  * @author blissnmx
  * @date 2022/2/22
- *给定一个字符串，请问字符串里有多少回文连续子字符串？
+ * 给定一个字符串，请问字符串里有多少回文连续子字符串？
  * 例如，字符串里"abc"有3个回文字符串，分别为"a"、"b"、"c"；
  * 而字符串"aaa"里有6个回文子字符串，分别为"a"、"a"、"a"、"aa"、"aa"和"aaa"。
  */
@@ -20,19 +20,20 @@ public class 回文子字符串的个数 {
      * 时间复杂度：O(N2)
      */
     public static int countSubStrPalineDrome(String str) {
-        int count = 0 ;
+        int count = 0;
         for (int i = 0; i < str.length(); i++) {
             count += isPalineDromeAndCount(str, i, i);
-            count += isPalineDromeAndCount(str, i, i+1);
+            count += isPalineDromeAndCount(str, i, i + 1);
         }
-        return count ;
+        return count;
     }
-    public static int isPalineDromeAndCount(String str,int start , int end) {
+
+    public static int isPalineDromeAndCount(String str, int start, int end) {
         int count = 0;
-         while(start>=0 && end<str.length() && str.charAt(start) == str.charAt(end)){
-            count ++ ;
-            start -- ;
-            end ++ ;
+        while (start >= 0 && end < str.length() && str.charAt(start) == str.charAt(end)) {
+            count++;
+            start--;
+            end++;
         }
         return count;
     }

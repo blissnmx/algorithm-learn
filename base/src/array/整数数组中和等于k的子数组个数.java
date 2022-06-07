@@ -24,22 +24,22 @@ public class 整数数组中和等于k的子数组个数 {
      * 时间复杂度O(n)
      * 空间复杂度O(n)
      */
-    public static int findSubArraySumKCount(int[] arr,int k){
-        int sum = 0 ,count = 0 ;
-        Map<Integer,Integer> sums = new HashMap<>();
+    public static int findSubArraySumKCount(int[] arr, int k) {
+        int sum = 0, count = 0;
+        Map<Integer, Integer> sums = new HashMap<>();
         sums.put(0, 1);
         for (int num : arr) {
-            sum += num ;
+            sum += num;
             if (sums.containsKey(sum - k)) {
-                count += sums.get(sum-k);
+                count += sums.get(sum - k);
             }
             sums.put(sum, sums.getOrDefault(sum - k, 0) + 1);
         }
-        return count ;
+        return count;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1,-2,1,-3,4,2,1};
-        System.out.println(findSubArraySumKCount(arr,3));
+        int[] arr = new int[]{1, -2, 1, -3, 4, 2, 1};
+        System.out.println(findSubArraySumKCount(arr, 3));
     }
 }

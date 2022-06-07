@@ -19,54 +19,53 @@ public class 两个链表的第一个重合结点 {
      * 2、两个链表同时移动，得到重合的节点
      * 时间复杂度：O(m+n)
      */
-    public static ListNode findRepeatNode(ListNode a , ListNode b ) {
+    public static ListNode findRepeatNode(ListNode a, ListNode b) {
         int aLen = countListNode(a);
         int bLen = countListNode(b);
         int k = Math.abs(aLen - bLen);
         ListNode tmpLongNode = b;
         ListNode tmpShorterNode = a;
-        if(aLen>bLen){
-            tmpLongNode = a ;
-            tmpShorterNode = b ;
+        if (aLen > bLen) {
+            tmpLongNode = a;
+            tmpShorterNode = b;
         }
         for (int i = 1; i <= k; i++) {
             tmpLongNode = tmpLongNode.next;
         }
-        while(tmpLongNode.val != tmpShorterNode.val){
-            tmpLongNode = tmpLongNode.next ;
+        while (tmpLongNode.val != tmpShorterNode.val) {
+            tmpLongNode = tmpLongNode.next;
             tmpShorterNode = tmpShorterNode.next;
         }
         return tmpLongNode;
     }
 
     private static int countListNode(ListNode head) {
-        int count = 0 ;
+        int count = 0;
         while (head != null) {
             head = head.next;
             count++;
         }
-        return count ;
+        return count;
     }
 
 
-
     public static void main(String[] args) {
-         ListNode a = new ListNode(1)
-                 .setNext(new ListNode(2)
-                .setNext(new ListNode(3)
+        ListNode a = new ListNode(1)
                 .setNext(new ListNode(2)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                )))));
-         ListNode b = new ListNode(7)
-                 .setNext(new ListNode(8)
-                .setNext(new ListNode(9)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                .setNext(new ListNode(9)
-                )))));
+                        .setNext(new ListNode(3)
+                                .setNext(new ListNode(2)
+                                        .setNext(new ListNode(4)
+                                                .setNext(new ListNode(5)
+                                                )))));
+        ListNode b = new ListNode(7)
+                .setNext(new ListNode(8)
+                        .setNext(new ListNode(9)
+                                .setNext(new ListNode(4)
+                                        .setNext(new ListNode(5)
+                                                .setNext(new ListNode(9)
+                                                )))));
         //System.out.println("countListNode(a) = " + countListNode(a));
-        ListNode listNode = findRepeatNode(a,b);
+        ListNode listNode = findRepeatNode(a, b);
         System.out.println("listNode.val = " + listNode.val);
     }
 }

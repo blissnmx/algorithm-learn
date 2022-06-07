@@ -22,22 +22,22 @@ public class 回文链表 {
      * 2、以此比较两个链表（前半部分可能多一个（奇数），在比较的时候可以忽略）
      */
     public static boolean checkIsPalldromeNode(ListNode head) {
-        ListNode slow = head ,fast = head;
+        ListNode slow = head, fast = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
-            fast = fast.next.next ;
+            fast = fast.next.next;
         }
-        ListNode back = revertListNode(slow.next) ;
+        ListNode back = revertListNode(slow.next);
         slow.next = null;
-        ListNode front = head ;
+        ListNode front = head;
         while (back != null && front != null) {
             if (front.val != back.val) {
                 return false;
             }
-            back = back.next ;
-            front = front.next ;
+            back = back.next;
+            front = front.next;
         }
-        return true ;
+        return true;
     }
 
     /**
@@ -45,23 +45,23 @@ public class 回文链表 {
      * 时间复杂度：O(n)
      */
     public static ListNode revertListNode(ListNode head) {
-        ListNode pre =null , cur = head ;
+        ListNode pre = null, cur = head;
         while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;
-            pre = cur ;
-            cur = next ;
+            pre = cur;
+            cur = next;
         }
         return pre;
     }
 
     public static void main(String[] args) {
-         ListNode head = new ListNode(1)
-                 .setNext(new ListNode(2)
-                .setNext(new ListNode(3)
+        ListNode head = new ListNode(1)
                 .setNext(new ListNode(2)
-                .setNext(new ListNode(1)
-                ))));
+                        .setNext(new ListNode(3)
+                                .setNext(new ListNode(2)
+                                        .setNext(new ListNode(1)
+                                        ))));
         System.out.println("checkIsPalldromeNode(head) = " + checkIsPalldromeNode(head));
 
     }

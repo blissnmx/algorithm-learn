@@ -27,35 +27,35 @@ public class 后缀表达式 {
      */
     public static int caclRPN(String[] strs) {
         Set<String> chars = new HashSet<>();
-        chars.addAll(Arrays.asList(new String[]{"+","-","*","/"}));
+        chars.addAll(Arrays.asList(new String[]{"+", "-", "*", "/"}));
         Stack<Integer> stack = new Stack<>();
         for (String str : strs) {
             if (chars.contains(str)) {
-                if(stack.empty() || stack.size()<2){
+                if (stack.empty() || stack.size() < 2) {
                     return 0;
                 }
                 Integer i = stack.pop();
                 Integer j = stack.pop();
-                stack.push(calc(i,j,str));
-            }else{
+                stack.push(calc(i, j, str));
+            } else {
                 stack.push(Integer.parseInt(str));
             }
         }
-        return stack.peek() ;
+        return stack.peek();
     }
 
-    public static int calc(int i, int j ,String oper) {
-        switch (oper){
+    public static int calc(int i, int j, String oper) {
+        switch (oper) {
             case "+":
-                return i+j;
+                return i + j;
             case "-":
-                return i-j;
+                return i - j;
             case "*":
-                return  i*j;
+                return i * j;
             case "/":
-                return i/j;
+                return i / j;
             default:
-                return  0 ;
+                return 0;
         }
     }
 

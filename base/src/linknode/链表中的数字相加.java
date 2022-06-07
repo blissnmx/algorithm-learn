@@ -24,20 +24,20 @@ public class 链表中的数字相加 {
         ListNode listNodeB = revertListNode(b);
         ListNode head = new ListNode(0);
         ListNode sumNode = head;
-        int carry = 0 ;
+        int carry = 0;
         while (listNodeA != null || listNodeB != null) {
             int va = listNodeA == null ? 0 : listNodeA.val;
             int vb = listNodeB == null ? 0 : listNodeB.val;
-            int sum = (va + vb + carry) >= 10 ?(va+vb+carry - 10):(va + vb);
-            ListNode listNode = new ListNode(sum  );
-            carry = (va+vb)>=10 ? 1 : 0 ;
+            int sum = (va + vb + carry) >= 10 ? (va + vb + carry - 10) : (va + vb);
+            ListNode listNode = new ListNode(sum);
+            carry = (va + vb) >= 10 ? 1 : 0;
             sumNode.next = listNode;
-            sumNode = sumNode.next ;
+            sumNode = sumNode.next;
 
-            listNodeA = listNodeA.next ;
-            listNodeB = listNodeB.next ;
+            listNodeA = listNodeA.next;
+            listNodeB = listNodeB.next;
         }
-        if(carry>0){
+        if (carry > 0) {
             sumNode.next = new ListNode(carry);
         }
         return revertListNode(head.next);
@@ -49,33 +49,33 @@ public class 链表中的数字相加 {
      * 时间复杂度：O(n)
      */
     public static ListNode revertListNode(ListNode head) {
-        ListNode pre =null , cur = head ;
+        ListNode pre = null, cur = head;
         while (cur != null) {
-            ListNode next = cur.next ;
-            cur.next = pre ;
-            pre = cur ;
-            cur = next ;
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
         return pre;
     }
 
     public static void main(String[] args) {
-         ListNode a = new ListNode(1)
-                 .setNext(new ListNode(2)
-                .setNext(new ListNode(3)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                .setNext(new ListNode(6)
-                )))));
+        ListNode a = new ListNode(1)
+                .setNext(new ListNode(2)
+                        .setNext(new ListNode(3)
+                                .setNext(new ListNode(4)
+                                        .setNext(new ListNode(5)
+                                                .setNext(new ListNode(6)
+                                                )))));
         ListNode b = new ListNode(10)
-                 .setNext(new ListNode(9)
-                .setNext(new ListNode(8)
-                .setNext(new ListNode(7)
-                .setNext(new ListNode(6)
-                .setNext(new ListNode(5)
-                )))));
+                .setNext(new ListNode(9)
+                        .setNext(new ListNode(8)
+                                .setNext(new ListNode(7)
+                                        .setNext(new ListNode(6)
+                                                .setNext(new ListNode(5)
+                                                )))));
 
-        ListNode listNode = twoSumListNode(a,b);
+        ListNode listNode = twoSumListNode(a, b);
         while (listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;

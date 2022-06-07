@@ -12,7 +12,7 @@ import java.util.Stack;
  * @date 2022/3/8
  */
 public class 用栈实现队列 {
-    private int size ;
+    private int size;
     private Stack<Integer> in;
     private Stack<Integer> out;
 
@@ -20,21 +20,23 @@ public class 用栈实现队列 {
         this.in = new Stack<>();
         this.out = new Stack<>();
     }
-    public int pop(){
-        if(out.empty()){
+
+    public int pop() {
+        if (out.empty()) {
             return -1;
         }
-        size -- ;
-       return out.pop();
+        size--;
+        return out.pop();
     }
 
     /**
      * 两个栈需要读取其中一个到另一个，时间复杂度为O(n)
+     *
      * @param val
      */
     public void push(int val) {
         in.push(val);
-        while (!in.empty()){
+        while (!in.empty()) {
             out.push(in.pop());
         }
         size++;

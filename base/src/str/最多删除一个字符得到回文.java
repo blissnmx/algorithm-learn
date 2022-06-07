@@ -15,31 +15,32 @@ public class 最多删除一个字符得到回文 {
 
     /**
      * 遍历字符串得到不相同的左边字符下标和右边字符下标，分别判断删除不同字符后的子串是否是回文
+     *
      * @param str
      * @return
      */
-    public static boolean isRemoveCharToGetPalineDrome(String str){
-        int l =0 ,r = str.length() -1 ;
+    public static boolean isRemoveCharToGetPalineDrome(String str) {
+        int l = 0, r = str.length() - 1;
         //得到不同字符的下标
-        while(l<r){
+        while (l < r) {
             if (str.charAt(l) != str.charAt(r)) {
                 break;
-            }else{
-                l++ ;
-                r --;
+            } else {
+                l++;
+                r--;
             }
         }
         //判断左边和右边的字符跳过之后是否是回文
-        return isPalineDrome(str.substring(l + 1, r+1)) || isPalineDrome(str.substring(l, r ));
+        return isPalineDrome(str.substring(l + 1, r + 1)) || isPalineDrome(str.substring(l, r));
     }
 
     public static boolean isPalineDrome(String str) {
-        int l = 0 ,r = str.length()-1;
-        while(l < r ){
+        int l = 0, r = str.length() - 1;
+        while (l < r) {
             if (str.charAt(l) == str.charAt(r)) {
                 l++;
                 r--;
-            }else{
+            } else {
                 return false;
             }
         }

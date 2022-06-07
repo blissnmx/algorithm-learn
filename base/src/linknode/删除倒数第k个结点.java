@@ -20,28 +20,28 @@ public class 删除倒数第k个结点 {
      * 时间复杂度：O(n+k)
      */
     public static ListNode removeBackNode(ListNode head, int k) {
-        ListNode s = head ,f = head;
+        ListNode s = head, f = head;
         for (int i = 1; i <= k; i++) {
-            f = f.next ;
+            f = f.next;
         }
-        while(f.next!=null){
-            f = f.next ;
-            s = s.next ;
+        while (f.next != null) {
+            f = f.next;
+            s = s.next;
         }
-        s.next = s.next.next ;
+        s.next = s.next.next;
         return head;
     }
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1).setNext(new ListNode(2)
                 .setNext(new ListNode(3)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                .setNext(new ListNode(6))))));
+                        .setNext(new ListNode(4)
+                                .setNext(new ListNode(5)
+                                        .setNext(new ListNode(6))))));
         ListNode listNode = removeBackNode(head, 2);
         while (listNode != null) {
             System.out.println(listNode.val);
-            listNode = listNode.next ;
+            listNode = listNode.next;
         }
     }
 }

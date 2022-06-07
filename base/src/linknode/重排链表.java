@@ -21,22 +21,22 @@ public class 重排链表 {
      * 2、翻转后半部分，将两部分组成新的链表
      */
     public static ListNode twoListNodeRevertAndMerge(ListNode head) {
-        ListNode slow = head ,fast = head;
+        ListNode slow = head, fast = head;
         while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
-            fast = fast.next.next ;
+            fast = fast.next.next;
         }
-        ListNode back = revertListNode(slow.next) ;
+        ListNode back = revertListNode(slow.next);
         slow.next = null;
-        ListNode front = head ;
+        ListNode front = head;
         ListNode dummy = front;
         while (back != null && front != null) {
-            ListNode fnext = front.next ;
+            ListNode fnext = front.next;
             ListNode bnext = back.next;
-            front.next = back ;
-            back.next = fnext ;
-            front = fnext ;
-            back = bnext ;
+            front.next = back;
+            back.next = fnext;
+            front = fnext;
+            back = bnext;
         }
         return dummy;
     }
@@ -46,24 +46,24 @@ public class 重排链表 {
      * 时间复杂度：O(n)
      */
     public static ListNode revertListNode(ListNode head) {
-        ListNode pre =null , cur = head ;
+        ListNode pre = null, cur = head;
         while (cur != null) {
             ListNode next = cur.next;
             cur.next = pre;
-            pre = cur ;
-            cur = next ;
+            pre = cur;
+            cur = next;
         }
         return pre;
     }
 
     public static void main(String[] args) {
-         ListNode head = new ListNode(1)
-                 .setNext(new ListNode(2)
-                .setNext(new ListNode(3)
-                .setNext(new ListNode(4)
-                .setNext(new ListNode(5)
-                .setNext(new ListNode(6)
-                )))));
+        ListNode head = new ListNode(1)
+                .setNext(new ListNode(2)
+                        .setNext(new ListNode(3)
+                                .setNext(new ListNode(4)
+                                        .setNext(new ListNode(5)
+                                                .setNext(new ListNode(6)
+                                                )))));
         ListNode listNode = twoListNodeRevertAndMerge(head);
         while (listNode != null) {
             System.out.println(listNode.val);

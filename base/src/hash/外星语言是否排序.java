@@ -21,28 +21,28 @@ public class 外星语言是否排序 {
      * 时间复杂度O(nm) m为字符串的平均长度
      * 空间复杂度O(1)
      */
-    public static boolean isAlienSort(String[] words,String sortWord) {
+    public static boolean isAlienSort(String[] words, String sortWord) {
         int[] sortFlag = new int[26];
         for (int i = 0; i < sortWord.length(); i++) {
-            sortFlag[sortWord.charAt(i) - 'a'] = i+1;
+            sortFlag[sortWord.charAt(i) - 'a'] = i + 1;
         }
-        for (int i = 0; i < words.length -1; i++) {
+        for (int i = 0; i < words.length - 1; i++) {
             //相邻两个元素的字符比较大小
             String word1 = words[i];
-            String word2 = words[i+1];
-            int j = 0 ;
-            while(j< word1.length() && j<word2.length()){
+            String word2 = words[i + 1];
+            int j = 0;
+            while (j < word1.length() && j < word2.length()) {
                 int i1 = sortFlag[word1.charAt(j) - 'a'];
                 int i2 = sortFlag[word2.charAt(j) - 'a'];
-                if( i1 > i2 ){
-                    return false ;
+                if (i1 > i2) {
+                    return false;
                 }
-                if(i1 < i2 ){
+                if (i1 < i2) {
                     break;
                 }
                 j++;
             }
-            if(word1.length() > word2.length() && j == word2.length()){
+            if (word1.length() > word2.length() && j == word2.length()) {
                 //字符相同，则短的单词应该在前面
                 return false;
             }
@@ -51,8 +51,8 @@ public class 外星语言是否排序 {
     }
 
     public static void main(String[] args) {
-        String[] words = new String[]{"off","offer","is", "coming"};
+        String[] words = new String[]{"off", "offer", "is", "coming"};
         String sort = "zyxwvutsrqponmlkjihgfedcba";
-        System.out.println("isAlienSort(words) = " + isAlienSort(words,sort));
+        System.out.println("isAlienSort(words) = " + isAlienSort(words, sort));
     }
 }

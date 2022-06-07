@@ -28,25 +28,25 @@ public class 最小时间差 {
     public static int findTimeMinDiff(List<String> timeStrs) {
         if (timeStrs.size() > 1440) {
             //有重复时间
-            return  0 ;
+            return 0;
         }
         boolean[] minFlags = new boolean[1440];
         for (String timeStr : timeStrs) {
-            int idxMinute = Integer.parseInt(timeStr.split(":")[0]) * 60 + Integer.parseInt(timeStr.split(":")[1]) ;
-            if(minFlags[idxMinute]){
+            int idxMinute = Integer.parseInt(timeStr.split(":")[0]) * 60 + Integer.parseInt(timeStr.split(":")[1]);
+            if (minFlags[idxMinute]) {
                 return 0;
             }
-            minFlags[idxMinute] = true ;
+            minFlags[idxMinute] = true;
         }
-        int pre = -1 ,min = 1440,first = 1440 ,last = 0;
-        for (int i = 0 ;i<minFlags.length; ++i) {
-            if(minFlags[i]){
-                if(pre >= 0){
+        int pre = -1, min = 1440, first = 1440, last = 0;
+        for (int i = 0; i < minFlags.length; ++i) {
+            if (minFlags[i]) {
+                if (pre >= 0) {
                     min = Math.min(min, (i - pre));
-                }else{
-                    first = i ;
+                } else {
+                    first = i;
                 }
-                pre = i ;
+                pre = i;
                 last = Math.max(last, i);
             }
         }

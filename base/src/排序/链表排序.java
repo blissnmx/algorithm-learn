@@ -24,7 +24,7 @@ public class 链表排序 {
         ListNode listNode1 = mergeSortNode(mid);
 
         //合并排序后的子链表
-        return  merge(listNode, listNode1);
+        return merge(listNode, listNode1);
     }
 
     private static ListNode merge(ListNode mid, ListNode head) {
@@ -32,11 +32,11 @@ public class 链表排序 {
         ListNode cur = r;
         while (mid != null || head != null) {
             if (head == null || (mid != null && (mid.val < head.val))) {
-                cur.next = mid ;
-                mid = mid.next ;
-            }else{
-                cur.next = head ;
-                head = head.next ;
+                cur.next = mid;
+                mid = mid.next;
+            } else {
+                cur.next = head;
+                head = head.next;
             }
             cur = cur.next;
         }
@@ -44,14 +44,14 @@ public class 链表排序 {
     }
 
     private static ListNode getMid(ListNode head) {
-        ListNode slow = head ;
+        ListNode slow = head;
         ListNode fast = head.next;
         while (fast != null && fast.next != null) {
             slow = slow.next;
-            fast = fast.next.next ;
+            fast = fast.next.next;
         }
         ListNode second = slow.next;
-        slow.next = null ;
+        slow.next = null;
 
         return second;
     }
@@ -65,7 +65,7 @@ public class 链表排序 {
         ListNode listNode = mergeSortNode(head);
         while (listNode != null) {
             System.out.print(listNode.val);
-            listNode = listNode.next ;
+            listNode = listNode.next;
         }
     }
 }

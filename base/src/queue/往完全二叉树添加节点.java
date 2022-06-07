@@ -19,13 +19,13 @@ import java.util.Queue;
  */
 public class 往完全二叉树添加节点 {
     private TreeNode root;
-    private Queue<TreeNode> queue ;
+    private Queue<TreeNode> queue;
 
     public 往完全二叉树添加节点(TreeNode root) {
         if (root == null) {
             return;
         }
-        this.root = root ;
+        this.root = root;
         this.queue = new LinkedList<>();
         queue.offer(root);
         while (queue.peek().left != null && queue.peek().right != null) {
@@ -41,10 +41,10 @@ public class 往完全二叉树添加节点 {
         }
         TreeNode newNode = new TreeNode(val);
         if (queue.peek().left == null) {
-            queue.peek().left = newNode ;
-        }else{
+            queue.peek().left = newNode;
+        } else {
             TreeNode parent = queue.poll();
-            parent.right = newNode ;
+            parent.right = newNode;
             queue.offer(parent.left);
             queue.offer(parent.right);
         }

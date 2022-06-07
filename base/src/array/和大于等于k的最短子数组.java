@@ -16,45 +16,44 @@ public class 和大于等于k的最短子数组 {
 
     /**
      * @param nums
-     * @return
-     * 关键词：正整数、最小长度
+     * @return 关键词：正整数、最小长度
      * 正向双指针
      * 时间复杂度：O(N) 循环总共执行了n次
      * 空间复杂度：O(1)
      */
-    public static int minSubArrayLength (int[] nums ,int k) {
-        int minLen = nums.length,sum = 0 ,i = 0 ,j = 0 ;
+    public static int minSubArrayLength(int[] nums, int k) {
+        int minLen = nums.length, sum = 0, i = 0, j = 0;
         while (j < nums.length) {
             sum = sum + nums[j];
-            while (i<=j && sum >= k){
+            while (i <= j && sum >= k) {
                 minLen = Math.min(minLen, (j - i) + 1);
                 sum = sum - nums[i];
                 i++;
             }
             j++;
         }
-        return minLen ;
+        return minLen;
     }
 
     //举一反三  求和小于等于k的连续数组的个数 时间复杂度O(n)
     public static int countSubArray(int[] nums, int k) {
-        int count  = 0 , sum = 0 ,l = 0 ;
+        int count = 0, sum = 0, l = 0;
         for (int r = 0; r < nums.length; r++) {
             sum += nums[r];
             while (l <= r && sum > k) {
                 sum -= nums[l];
                 l++;
             }
-            count += (r>=l) ? r-l+1 :0;
+            count += (r >= l) ? r - l + 1 : 0;
         }
-        return count ;
+        return count;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1,4,3,5,7};
+        int[] nums = new int[]{1, 4, 3, 5, 7};
         System.out.println("maxSubArrayLength(nums, 7) = " + minSubArrayLength(nums, 7));
 
         System.out.println("countSubArray(nums,7) = " + countSubArray(nums, 7));
 
-     }
+    }
 }

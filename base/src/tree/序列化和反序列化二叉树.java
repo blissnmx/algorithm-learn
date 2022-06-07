@@ -12,14 +12,14 @@ package tree;
  */
 public class 序列化和反序列化二叉树 {
 
-    public static String serialize(TreeNode root){
-         return  firstIterator(root);
+    public static String serialize(TreeNode root) {
+        return firstIterator(root);
     }
 
     public static TreeNode deserialize(String str) {
         String[] strs = str.split(",");
         int[] i = {0};
-        return genTreeNode(strs,i);
+        return genTreeNode(strs, i);
     }
 
     private static TreeNode genTreeNode(String[] strs, int[] i) {
@@ -31,7 +31,7 @@ public class 序列化和反序列化二叉树 {
         TreeNode node = new TreeNode(Integer.parseInt(str));
         node.left = genTreeNode(strs, i);
         node.right = genTreeNode(strs, i);
-        return node ;
+        return node;
     }
 
     public static String firstIterator(TreeNode root) {
@@ -41,7 +41,7 @@ public class 序列化和反序列化二叉树 {
         String val = String.valueOf(root.val);
         String left = String.valueOf(firstIterator(root.left));
         String right = String.valueOf(firstIterator(root.right));
-        return val +"," + left+"," + right;
+        return val + "," + left + "," + right;
     }
 
     public static void main(String[] args) {

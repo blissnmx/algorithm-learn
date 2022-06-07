@@ -22,20 +22,22 @@ import java.util.Map;
 public class LRUCache {
     private int capacity;
     private Map<Integer, ListNode> container;
-    private ListNode head ;
-    private ListNode tail ;
+    private ListNode head;
+    private ListNode tail;
+
     public LRUCache(int cap) {
-        capacity = cap ;
+        capacity = cap;
         container = new HashMap<>();
         //哨兵节点，简化插入、删除操作
         head = new ListNode(-1, -1);
         tail = new ListNode(-1, -1);
-        head.next = tail ;
-        tail.pre = head ;
+        head.next = tail;
+        tail.pre = head;
     }
 
     /**
      * get操作返回之前，将当前位置的链表移至链表末尾，头结点表示最少使用的节点（淘汰）
+     *
      * @param key
      * @return
      */
@@ -54,8 +56,8 @@ public class LRUCache {
 
     public void put(int key, int val) {
         if (container.containsKey(key)) {
-            moveToTail(container.get(key),val);
-        }else{
+            moveToTail(container.get(key), val);
+        } else {
             //判断容量
             if (container.size() == capacity) {
                 container.remove(head.next.key);
@@ -68,21 +70,21 @@ public class LRUCache {
     }
 
     private void insertTail(ListNode newNode) {
-        tail.pre.next = newNode ;
-        newNode.pre = tail.pre ;
+        tail.pre.next = newNode;
+        newNode.pre = tail.pre;
         newNode.next = tail;
-        tail.pre = newNode ;
+        tail.pre = newNode;
     }
 
     private void deleteNode(ListNode node) {
-        node.pre.next = node.next ;
-        node.next.pre = node.pre ;
+        node.pre.next = node.next;
+        node.next.pre = node.pre;
     }
 
     private void moveToTail(ListNode listNode, int val) {
         //删除旧节点
         deleteNode(listNode);
-        listNode.val = val ;
+        listNode.val = val;
         //末尾增加新节点
         insertTail(listNode);
     }
@@ -121,10 +123,10 @@ public class LRUCache {
 
     public static void main(String[] args) {
         LRUCache cache = new LRUCache(2);
-        cache.put(1,2);
-        cache.put(2,3);
+        cache.put(1, 2);
+        cache.put(2, 3);
         System.out.println("cache = " + cache);
-        cache.put(3,4);
+        cache.put(3, 4);
         System.out.println("cache = " + cache);
 
     }
