@@ -1,4 +1,4 @@
-package medium.BFS;
+package medium.BDFS;
 
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class 最大岛屿 {
      * [0,0,0,1,1]]
      */
     @Test
-    public void largeAreaIsland(){
+    public void largeAreaIslandBFS(){
         int[][] grid = new int[][]{{1,1,0,0,0},{1,1,0,0,0},{0,0,0,1,1},{0,0,0,1,1}};
         int max = 0 ,m = grid.length,n = grid[0].length ;
         Queue<int[]> queue = new LinkedList<>();
