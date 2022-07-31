@@ -8,6 +8,7 @@ package medium.BDFS;
 import Model.TreeNode;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -103,6 +104,57 @@ public class 填充二叉树指针 {
         }
         return root;
     }
+
+    /**
+     * 给定一棵二叉树的根节点 root ，请找出该二叉树中每一层的最大值。
+     */
+    @Test
+    public void testGetMaxValBtreeLevel() {
+        TreeNode root = new TreeNode(1);
+        List<Integer> result = new ArrayList<>();
+        if(root == null){ }
+        Queue<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        while(!que.isEmpty()){
+            int size = que.size();
+            int max = Integer.MIN_VALUE ;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = que.poll();
+                if(node.left!=null){que.offer(node.left);}
+                if(node.right!=null){que.offer(node.right);}
+                max = Math.max(max,node.val);
+            }
+            result.add(max);
+        }
+    }
+    /**
+     * 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+     *
+     * 初始状态下，所有 next 指针都被设置为 NULL
+     */
+    @Test
+    public void testConnectNextNode() {
+        Node root = new Node();
+        if(root == null){ }
+        Node cur = root;
+        //利用当前行将下一行节点进行连接
+        while(cur != null){
+            Node dummy = new Node();
+            Node pre = dummy;
+            while(cur != null){
+                if(cur.left != null) {
+                    pre.next = cur.left;
+                    pre = cur.left;
+                }
+                if(cur.right != null){
+                    pre.next = cur.right ;
+                    pre = cur.right;
+                }
+                cur = cur.next ;
+            }
+            cur = dummy.next;
+        }
+    }
 }
 /**
  * 102.二叉树的层序遍历
@@ -113,6 +165,6 @@ public class 填充二叉树指针 {
  * 515.在每个树行中找最大值
  * 116.填充每个节点的下一个右侧节点指针
  * 117.填充每个节点的下一个右侧节点指针II
- * 104.二叉树的最大深度
+ * 104. 二叉树的最大深度
  * 111.二叉树的最小深度
  */
