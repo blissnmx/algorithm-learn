@@ -94,7 +94,7 @@ public class 全排列 {
   @Test
     public void testCombine3(){
         int []  nums = {1,2,3};
-        List<List<Integer>> lists = combinationSum(nums);
+        List<List<Integer>> lists = combinationSum(nums,3);
         System.out.println(lists);
     }
 
@@ -104,32 +104,86 @@ public class 全排列 {
      * candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。 
      *
      * 对于给定的输入，保证和为 target 的不同组合数少于 150 个。
-     * @param nums
+     * @param candidates
      * @return
      */
-    private List<List<Integer>> combinationSum(int[] nums, int target) {
+    private List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        if(nums.length==0) return res;
+        if(candidates.length==0) return res;
          Deque<Integer> path = new ArrayDeque<>();
-        Arrays.sort(nums);
+        Arrays.sort(candidates);
         //DFS
-        dfscombinationSum(nums,res,path,target);
+        int [] sum = new int[1];
+        dfscombinationSum(candidates,0,res,path,target,sum);
 
         return res;
     }
-    private static void dfscombinationSum(int [] nums, List<List<Integer>> res,Deque<Integer> path, int target) {
-        int sum = path.stream().map(d->d).sum();
-        if(sum == target){
+    private static void dfscombinationSum(int [] nums,int begin, List<List<Integer>> res,Deque<Integer> path, int target,int [] sum) {
+        //int sum = path.stream().mapToInt(d->d).sum();
+        if(sum[0] == target){
             res.add(new ArrayList<>(path));
             return ;
         }
-        for (int i = 0; i < nums.length; i++) {
-            if(sum + nums[i] > target){
+        if(sum[0] > target) return ;
+
+        for (int i = begin; i < nums.length; i++) {
+            if(sum[0] + nums[i] > target){
                 break;
             }
             path.addLast(nums[i]);
-            dfsAggrangement2(nums,res,path,used);
+            sum[0] +=nums[i];
+            dfscombinationSum(nums,i,res,path,target,sum);
             path.removeLast();
+            sum[0] -=nums[i];
+        }
+    }
+
+ @Test
+    public void testCombine4(){
+        int []  nums = {1,2,3};
+        List<List<Integer>> lists = combinationSum2(nums,3);
+        System.out.println(lists);
+    }
+
+    /**
+     * 给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+     *
+     * candidates 中的每个数字在每个组合中只能使用 一次 。
+     * @param candidates
+     * @return
+     */
+    private List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(candidates.length==0) return res;
+         Deque<Integer> path = new ArrayDeque<>();
+        Arrays.sort(candidates);
+        //DFS
+        int [] sum = new int[1];
+        boolean [] used = new boolean[candidates.length];
+        dfscombinationSum2(candidates,0,res,path,target,sum,used);
+
+        return res;
+    }
+    private static void dfscombinationSum2(int [] nums,int begin, List<List<Integer>> res,Deque<Integer> path, int target,int [] sum,boolean [] used) {
+        if(sum[0] > target) return ;
+        if(sum[0] == target){
+            res.add(new ArrayList<>(path));
+            return ;
+        }
+        for (int i = begin; i < nums.length; i++) {
+            if(sum[0] + nums[i] > target){
+                break;
+            }
+            if(i>0 && nums[i] == nums[i-1] && used[i-1]){
+                continue;
+            }
+            path.addLast(nums[i]);
+            sum[0] +=nums[i];
+            used[i] = true;
+            dfscombinationSum2(nums,i+1,res,path,target,sum,used);
+            path.removeLast();
+            sum[0] -=nums[i];
+            used[i] = false;
         }
     }
 
