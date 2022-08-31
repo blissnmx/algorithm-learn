@@ -13,35 +13,42 @@ public class 复原ip {
         if(s.length()<4 || s.length()>12){return res ;}
 
         Deque<String> path = new LinkedList<>();
-
-        dfs(s,1 , path,res);
+        dfs(s,0 ,s.length(), path,res);
         return res;
     }
 
-    private static void dfs(String s, int begin, Deque<String> path, List<String> res) {
-        int remainLength = s.length() - begin ;
-        //剩余位数%（4-path.size()) >0 结束
-        if((remainLength / (4-path.size())) >3){
-            return ;
-        }
+    private static void dfs(String s, int begin ,int len , Deque<String> path, List<String> res) {
+
         if(path.size() == 4){
             res.add(path.stream().map(t->t+".").collect(Collectors.joining()));
             return ;
         }
-        for (int i = begin; i <= begin+3; i++) {
+        for (int i = begin; i < begin+3; i++) {
+            System.out.println(path);
+
+            //剩余位数%（4-path.size()) >0 结束
+          /*  if(((s.length()-(i+1)) / (4-path.size())) >3){
+                break;
+            }*/
             if(begin +i >s.length()){break;}
             //判断是否是正确的ip位数
-            if(checkIpFormat(s,begin , begin+i)){
+            if(checkIpFormat(s,begin, i+1)){
                 path.addLast(s.substring(begin,i+1));
-
-                dfs(s,begin+i , path,res);
+                int yushu = (len -(i+1)) % (4-path.size());
+                int chushu = (len-(i+1)) / (4-path.size());
+                boolean flag = (yushu>0 || chushu > (4-path.size())) ? true :false;
+                if(flag){
+                    path.removeLast();
+                    continue;
+                }
+                dfs(s,begin+1 ,len, path,res);
                 path.removeLast();
             }
         }
 
     }
     private static boolean checkIpFormat(String s , int begin , int end ){
-        String str = s.substring(begin, end + 1);
+        String str = s.substring(begin, end );
         if(str.length()> 1 && str.startsWith("0")){
             return false;
         }
